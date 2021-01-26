@@ -13,6 +13,7 @@ namespace Core.Specifications
 
         public BaseSpecification()
         {
+            
         }
 
         public Expression<Func<T, bool>> Criteria { get; }

@@ -15,7 +15,6 @@ namespace Infrastructure.Data
             }
 
             query = spec.Includes.Aggregate(query,(current,include) => current.Include(include));
-
             return query;
         }
         
