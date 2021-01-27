@@ -38,6 +38,7 @@ namespace Infrastructure.Data
 
         public IQueryable<T> ApplySpecifitaions(ISpecification<T> spec)
         {
+            
             return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(),spec);
         }
 

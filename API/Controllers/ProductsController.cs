@@ -73,6 +73,7 @@ namespace API.Controllers
         {
             var productTypes = await _productTypeRepo.ListAllAsync();
             return Ok(productTypes);
+            
         }
     }
 }
