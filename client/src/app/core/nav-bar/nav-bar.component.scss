@@ -10,3 +10,20 @@
     font-size:1em ;
     text-align: center;
 }
+
+a{
+    text-decoration: none;
+    color: #3a3c3d;
+
+    &.active{
+        color: rgb(15, 192, 15);
+    }
+}
+
+.logo{
+    cursor: pointer;
+
+    &:focus{
+        outline: none;
+    }
+}
