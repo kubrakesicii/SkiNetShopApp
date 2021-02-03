@@ -10,7 +10,8 @@ import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,12 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    HomeModule
+    HomeModule,
+    NgxSpinnerModule
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true}
+    {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true},
+    {provide:HTTP_INTERCEPTORS,useClass:LoadingInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]
 })
