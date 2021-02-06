@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BasketComponent } from './basket.component';
 import { BasketRoutingModule } from './basket-routing.module';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -9,7 +11,9 @@ import { BasketRoutingModule } from './basket-routing.module';
   declarations: [BasketComponent],
   imports: [
     CommonModule,
-    BasketRoutingModule
+    BasketRoutingModule,
+    RouterModule,
+    SharedModule
   ]
 })
 export class BasketModule { }

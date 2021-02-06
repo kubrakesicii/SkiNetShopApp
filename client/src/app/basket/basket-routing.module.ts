@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BasketComponent } from './basket.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,4 +12,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class BasketRoutingModule { }
+export class BasketRoutingModule {}
