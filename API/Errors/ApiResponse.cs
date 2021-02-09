@@ -16,6 +16,7 @@ namespace API.Errors
             400 => "Bad Request you made",
             401 => "Authorized, you not",
             404 => "Not found what you want",
+            405  => "Unknown",
             500 => "Server made an error"
             };
         }

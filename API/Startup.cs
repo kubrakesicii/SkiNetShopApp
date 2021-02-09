@@ -2,7 +2,10 @@ using API.Extensions;
 using API.Helpers;
 using API.Middleware;
 using AutoMapper;
+using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Identity;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +31,8 @@ namespace API
             services.AddDbContext<StoreContext>(x => x.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
             services.AddAutoMapper(typeof(MappingProfiles));
 
+            services.AddDbContext<AppIdentityDbContext>(x => x.UseSqlServer(_config.GetConnectionString("IdentityConnection")));
+
             services.AddSingleton<IConnectionMultiplexer>(c => {
                 var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"));
                 return ConnectionMultiplexer.Connect(configuration);
@@ -35,11 +40,13 @@ namespace API
 
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();
+            services.AddIdentityServices(_config);
             services.AddCors(opt => {
                 opt.AddPolicy("CorsPolicy",policy => {
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
                 });
             });
+            services.AddScoped<ITokenService,TokenService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +64,7 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSwaggerDocumentation();
