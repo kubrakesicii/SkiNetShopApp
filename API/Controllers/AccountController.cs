@@ -37,7 +37,7 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
-                DisplayeName = user.DisplayName
+                DisplayName = user.DisplayName
             };
         }
 
@@ -86,7 +86,7 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
-                DisplayeName = user.DisplayName
+                DisplayName = user.DisplayName
             };
         }
 
@@ -111,7 +111,7 @@ namespace API.Controllers
             return new UserDto
             {
                 Email = registerDto.Email,
-                DisplayeName = registerDto.DisplayName,
+                DisplayName = registerDto.DisplayName,
                 Token = _tokenService.CreateToken(user)
             };
 
